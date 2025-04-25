@@ -7,7 +7,7 @@ export class UserDto {
 
   @IsPhoneNumber()
   phone: string;
-  
+
   @IsNumber()
   @Min(0)
   @Max(150)

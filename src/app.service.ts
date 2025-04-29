@@ -1,5 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { HealthCheckResponse } from './interfaces/health-check.interface';
+import { SystemInfoResponse } from './interfaces/system-info.interface';
 
 @Injectable()
 export class AppService {
@@ -13,7 +14,7 @@ export class AppService {
     };
   }
 
-  getSystemInfo(): Record<string, any> {
+  getSystemInfo(): SystemInfoResponse {
     return {
       memory: {
         total: process.memoryUsage().heapTotal,

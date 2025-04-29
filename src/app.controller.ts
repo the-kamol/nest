@@ -1,6 +1,7 @@
 import { Controller, Get } from '@nestjs/common';
 import { AppService } from './app.service';
 import { HealthCheckResponse } from './interfaces/health-check.interface';
+import { SystemInfoResponse } from './interfaces/system-info.interface';
 
 @Controller()
 export class AppController {
@@ -12,7 +13,7 @@ export class AppController {
   }
 
   @Get('system')
-  getSystemInfo(): Record<string, any> {
+  getSystemInfo(): SystemInfoResponse {
     return this.appService.getSystemInfo();
   }
 }

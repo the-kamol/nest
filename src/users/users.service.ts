@@ -11,6 +11,9 @@ export class UsersService {
       name: userData.name,
       phone: userData.phone,
       age: userData.age,
+      email: userData.email,
+      locale: userData.locale,
+      timezone: userData.timezone,
     };
     this.users.push(user);
     return user;

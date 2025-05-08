@@ -9,15 +9,23 @@ import {
   Matches,
   IsOptional,
 } from 'class-validator';
+import { Transform, TransformFnParams } from 'class-transformer';
 import 'reflect-metadata';
 
 export class UserDto {
   @IsString()
   name: string;
 
-  @IsPhoneNumber()
+  @IsOptional()
+  @IsPhoneNumber(undefined, {
+    message: `Please provide a valid phone number with country code (e.g., +998935337909)`,
+  })
   phone: string;
 
+  @Transform(({ value }: TransformFnParams): number | string => {
+    const num = Number(value);
+    return isNaN(num) ? value : num;
+  })
   @IsNumber()
   @Min(0)
   @Max(150)

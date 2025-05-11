@@ -1,7 +1,6 @@
 import {
   IsString,
   IsNumber,
-  IsPhoneNumber,
   Min,
   Max,
   IsEmail,
@@ -17,9 +16,6 @@ export class UserDto {
   name: string;
 
   @IsOptional()
-  @IsPhoneNumber(undefined, {
-    message: `Please provide a valid phone number with country code (e.g., +998935337909)`,
-  })
   phone: string;
 
   @Transform(({ value }: TransformFnParams): number | string => {
